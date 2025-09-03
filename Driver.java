@@ -7,7 +7,8 @@ import kareltherobot.*;
 public class Driver implements Directions {
 // declared here so it is visible in all the methods!! 
 // It will be assigned a value in the getInfo method
-    private static Robot r; 
+    private static Robot r;
+
 
 
     // You will add very many variables!!
@@ -34,85 +35,36 @@ public class Driver implements Directions {
 
         World.readWorld(wrldName);
     World.setVisible(true);
-    World.setDelay(5);
-        Robot r = new Robot (7, 7, East, 0);
-while (r.frontIsClear()==true) {
-    r.move();
-    while (r.nextToABeeper()==true) {
-        r.pickBeeper();
-        
-    }
-}
+    World.setDelay(1);
+    Robot r = new Robot (7, 7, East, 0);
+	for(int i = 1; i <=500000000 ; i++){
+		while (r.frontIsClear()==true) {
+			r.move();
+			while (r.nextToABeeper()==true) {
+				r.pickBeeper();
+				
+			}
+		}
 
 
-if (r. facingWest()==true) {
-	r.turnLeft();
-	r.turnLeft();
-	r.turnLeft();
-	r.move();
-	r.turnLeft();
-	r.turnLeft();
-	r.turnLeft();
-}
-if (r.facingEast()==true) {
-	r.turnLeft();
-	r.move();
-	r.turnLeft();
-}
-while (r.frontIsClear()==true) {
-    r.move();
-    while (r.nextToABeeper()==true) {
-        r.pickBeeper();
-        
-    }
-}
-r.turnLeft();
-r.turnLeft();
-r.turnLeft();
-r.move();
-r.turnLeft();
-r.turnLeft();
-r.turnLeft();
-
-while (r.frontIsClear()==true) {
-    r.move();
-    while (r.nextToABeeper()==true) {
-        r.pickBeeper();
-        
-    }
-}
-r.turnLeft();
-r.move();
-r.turnLeft();
-while (r.frontIsClear()==true) {
-    r.move();
-    while (r.nextToABeeper()==true) {
-        r.pickBeeper();
-        
-    }
-}
-if (r.facingEast()) {
-    r.turnLeft();
-r.turnLeft();
-r.turnLeft();
-r.move();
-r.turnLeft();
-r.turnLeft();
-r.turnLeft();
-}
-if (r.facingWest()) {
-    r.turnLeft();
-r.move();
-r.turnLeft();
-}
-
-while (r.frontIsClear()==true) {
-    r.move();
-    while (r.nextToABeeper()==true) {
-        r.pickBeeper();
-        }
-
-}
+		if (r. facingWest()==true) {
+			r.turnLeft();
+			r.turnLeft();
+			r.turnLeft();
+			r.move();
+			r.turnLeft();
+			r.turnLeft();
+			r.turnLeft();
+		}
+		else if (r.facingEast()==true) {
+			r.turnLeft();
+			if (r. frontIsClear()==true){
+			r.move();
+			r.turnLeft();
+			}
+			if (r.frontIsClear()==false){
+				r.turnOff();
+	}
     /** This section will have all the logic that takes the Robot to every location 
      * and cleans up all piles of beepers.  Think about ways you can break this
      * large, complex task into smaller, easier to solve problems.
@@ -134,6 +86,7 @@ while (r.frontIsClear()==true) {
      * this info in the console (boring) or you can present using JOptionPane (cool!)
      */
 
+
   
 
 
@@ -143,3 +96,5 @@ while (r.frontIsClear()==true) {
 }
 
     }
+}
+}
