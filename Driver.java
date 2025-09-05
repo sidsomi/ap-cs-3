@@ -31,70 +31,91 @@ public class Driver implements Directions {
      * JOptionPane.
      */
 
+   
     String wrldName = "basicRoom.wld";
 
-        World.readWorld(wrldName);
+	World.readWorld(wrldName);
     World.setVisible(true);
-    World.setDelay(1);
-    Robot r = new Robot (7, 7, East, 0);
-	for(int i = 1; i <=500000000 ; i++){
-		while (r.frontIsClear()==true) {
-			r.move();
-			while (r.nextToABeeper()==true) {
-				r.pickBeeper();
-				
+	World.setSize(15,15);
+	World.setDelay(3);
+	Robot roomba = new Robot(7,6,East,0);
+	
+	int piles = 0;
+	int totalB = 0;
+	int largestPile = 0;
+	int area = 0;
+	int averagepile = 0;
+	int largestPileStreet = 0;
+	int largestPileAvenue = 0;
+
+
+	/** This section will have all the logic that takes the Robot to every location 
+	 * and cleans up all piles of beepers.  Think about ways you can break this
+	 * large, complex task into smaller, easier to solve problems.
+	 */
+
+		// the line below causes a null pointer exception
+		// what is that and why are we getting it?
+		for (int a = 1; a <= 999999999; a++) {
+			while (roomba.frontIsClear() == true) {
+				roomba.move();
+				area++;
+				int numBeepers = 0;
+
+				while (roomba.nextToABeeper() == true) {
+					roomba.pickBeeper();
+					totalB++;
+					numBeepers++;
+					if (numBeepers > largestPile){
+						largestPile = numBeepers;
+					}
+			}
+			if (numBeepers > 0) {
+				piles++;
 			}
 		}
 
-
-		if (r. facingWest()==true) {
-			r.turnLeft();
-			r.turnLeft();
-			r.turnLeft();
-			r.move();
-			r.turnLeft();
-			r.turnLeft();
-			r.turnLeft();
+			if (roomba.facingEast() == true) {
+				roomba.turnLeft();
+				roomba.move();
+				area++;
+				roomba.turnLeft();
 		}
-		else if (r.facingEast()==true) {
-			r.turnLeft();
-			if (r. frontIsClear()==true){
-			r.move();
-			r.turnLeft();
-			}
-			if (r.frontIsClear()==false){
-				r.turnOff();
-	}
-    /** This section will have all the logic that takes the Robot to every location 
-     * and cleans up all piles of beepers.  Think about ways you can break this
-     * large, complex task into smaller, easier to solve problems.
-     */
+			else if (roomba.facingWest() == true) {
+				roomba.turnLeft();
+				roomba.turnLeft();
+				roomba.turnLeft();
+				roomba.move();
+				area++;
+				roomba.turnLeft();
+				roomba.turnLeft();
+				roomba.turnLeft();
+		}
 
-        // the line below causes a null pointer exception
-        // what is that and why are we getting it?
-        
-
-
+		}
   
 
 
 
 
 
-    /** This method displays the results of cleaning the room.  All of the info
-     * in the pdf that describes the problem need to be displayed.  You can present
-     * this info in the console (boring) or you can present using JOptionPane (cool!)
-     */
+  	/** This method displays the results of cleaning the room.  All of the info
+	 * in the pdf that describes the problem need to be displayed.  You can present
+	 * this info in the console (boring) or you can present using JOptionPane (cool!)
+	 */
+		System.out.println("Area = "+area);
+		System.out.println("Total number of beepers = "+totalB);
+		System.out.println("Total number of piles = "+piles);
+		System.out.println("The largest pile = "+largestPile);
+		System.out.println("Average pile size = "+totalB/piles);
+		System.out.println("Percent dirty = "+piles/area*100);
 
 
-  
 
 
-  
 
 
-}
 
-    }
-}
+  }
+
 }
