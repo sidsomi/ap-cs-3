@@ -29,7 +29,7 @@ public class Driver implements Directions {
 	 * console). A more elegant way to get user input might include using a
 	 * JOptionPane.
 	 */
-		String wrldName = "finalTestWorld2024 (2).wld";
+		String wrldName = "finalTestWorld2024 (1).wld";
     World.readWorld(wrldName);
     World.setVisible(true);
 	World.setDelay(0);
@@ -39,6 +39,8 @@ public class Driver implements Directions {
     int totalB = 0;
     int largestPile = 0;
     int area = 0;
+    int largestPileAvenue = 0;
+    int largestPileStreet = 0;
 
 
 
@@ -49,7 +51,7 @@ public class Driver implements Directions {
 
         // the line below causes a null pointer exception
         // what is that and why are we getting it?
-        for (int a = 1; a <= 600; a++) {
+        for (int a = 1; a <= 999999999; a++) {
             while (roomba.frontIsClear() == true) {
                 roomba.move();
                 area++;
@@ -61,6 +63,8 @@ public class Driver implements Directions {
                     numBeepers++;
                     if (numBeepers > largestPile){
                         largestPile = numBeepers;
+                        largestPileStreet = roomba.street();
+                        largestPileAvenue = roomba.avenue();
                     }
             }
             if (numBeepers > 0) {
@@ -104,6 +108,7 @@ public class Driver implements Directions {
         System.out.println("Area = "+area);
         System.out.println("Total number of beepers = "+totalB);
         System.out.println("Total number of piles = "+piles);
+        System.out.println("The largest pile location was="+largestPileAvenue+","+largestPileStreet);
         System.out.println("The largest pile = "+largestPile);
         System.out.println("Average pile size = "+totalB/piles);
         System.out.println("Percent dirty = "+piles/area);
