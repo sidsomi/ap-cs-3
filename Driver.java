@@ -74,6 +74,10 @@ public class Driver implements Directions {
 
             if (roomba.facingEast() == true) {
                 roomba.turnLeft();
+                if (roomba.frontIsClear()==false) {
+                    roomba.turnOff();
+                    break;
+                }
 				roomba.move();
                 area++;
                 roomba.turnLeft();
@@ -87,6 +91,7 @@ public class Driver implements Directions {
                 }
                 if (roomba.frontIsClear()==false) {
                     roomba.turnOff();
+                    break;
                 }
                 area++;
                 roomba.turnLeft();
@@ -106,10 +111,10 @@ public class Driver implements Directions {
      * this info in the console (boring) or you can present using JOptionPane (cool!)
      */
         System.out.println("Area = "+area);
-        System.out.println("Total number of beepers = "+totalB);
         System.out.println("Total number of piles = "+piles);
-        System.out.println("The largest pile location was="+largestPileAvenue+","+largestPileStreet);
+        System.out.println("Total number of beepers = "+totalB);
         System.out.println("The largest pile = "+largestPile);
+        System.out.println("The largest pile location was="+largestPileAvenue+","+largestPileStreet);
         System.out.println("Average pile size = "+totalB/piles);
         System.out.println("Percent dirty = "+piles/area);
 
